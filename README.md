@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     subgraph "フェーズ1: データ収集"
         direction LR
@@ -22,4 +23,4 @@ graph TD
         MODEL --> HW2[<br>ハードウェア<br>ロボット搭載PC (NUC+GPU)<br>];
         HW2 --> SW2[<br>ソフトウェア<br>カスタム制御ソフトへ統合<br>];
         SW2 --> ROBOT[<br><b>実機ロボット</b><br>自律的なタスク実行<br>];
-    end# vla-model-flow
+    end
