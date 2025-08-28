@@ -2,25 +2,25 @@
 graph TD
     subgraph "フェーズ1: データ収集"
         direction LR
-        HW1[<br>ハードウェア<br>ロボットアーム・各種センサー<br>] --> P1{データ収集・監視};
-        P1 --> SW1[<br>ソフトウェア<br>自動収集プログラム<br>];
-        SW1 --> CLOUD1[<br>クラウド<br>Datalake / ストレージ<br>];
+        HW1[ハードウェア: ロボットアーム・各種センサー] --> P1{データ収集・監視};
+        P1 --> SW1[ソフトウェア: 自動収集プログラム];
+        SW1 --> CLOUD1[クラウド: Datalake / ストレージ];
     end
 
     subgraph "フェーズ2: データ処理・訓練"
-        CLOUD1 --> ONSERVER[<br>オンプレミス<br>PC / サーバー<br>];
-        ONSERVER --> P2{データ前処理<br>(ROSbagから動画抽出)};
-        P2 --> P3[<br>GenAI Studio<br>プロンプト調整・オートラベリング<br>];
+        CLOUD1 --> ONSERVER[オンプレミス: PC / サーバー];
+        ONSERVER --> P2{データ前処理 (ROSbagから動画抽出)};
+        P2 --> P3[GenAI Studio: プロンプト調整・オートラベリング];
         P3 --> P4(発話とストーリー生成);
-        P4 --> P5["<br>クラウドでのモデル訓練<br>GPU: A6000+ (40h+)<br>CPU: 128core+, RAM 500GB+<br>"];
+        P4 --> P5["クラウドでのモデル訓練 GPU:A6000+, CPU:128core+"];
         P5 --> CQ{エラーチェック};
         CQ -- エラーあり --> P3;
-        CQ -- 正常 --> MODEL[<br><b>訓練済みVLAモデル</b><br>];
+        CQ -- 正常 --> MODEL[<b>訓練済みVLAモデル</b>];
     end
 
     subgraph "フェーズ3: モデル実装"
         direction LR
-        MODEL --> HW2[<br>ハードウェア<br>ロボット搭載PC (NUC+GPU)<br>];
-        HW2 --> SW2[<br>ソフトウェア<br>カスタム制御ソフトへ統合<br>];
-        SW2 --> ROBOT[<br><b>実機ロボット</b><br>自律的なタスク実行<br>];
+        MODEL --> HW2[ハードウェア: ロボット搭載PC (NUC+GPU)];
+        HW2 --> SW2[ソフトウェア: カスタム制御ソフトへ統合];
+        SW2 --> ROBOT[<b>実機ロボット: 自律的なタスク実行</b>];
     end
