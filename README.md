@@ -1,7 +1,7 @@
 ```mermaid
 graph TD
     subgraph "フェーズ1: データ収集"
-        direction LR
+        direction LR;
         HW1[ハードウェア: ロボットアーム・各種センサー] --> P1{データ収集・監視};
         P1 --> SW1[ソフトウェア: 自動収集プログラム];
         SW1 --> CLOUD1[クラウド: Datalake / ストレージ];
@@ -19,7 +19,7 @@ graph TD
     end
 
     subgraph "フェーズ3: モデル実装"
-        direction LR
+        direction LR;
         MODEL --> HW2[ハードウェア: ロボット搭載PC (NUC+GPU)];
         HW2 --> SW2[ソフトウェア: カスタム制御ソフトへ統合];
         SW2 --> ROBOT[<b>実機ロボット: 自律的なタスク実行</b>];
